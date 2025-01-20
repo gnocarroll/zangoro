@@ -94,7 +94,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <LanguageStandard_C>stdclatest</LanguageStandard_C>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -127,12 +127,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Events.cpp" />
+    <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Constants.h" />
     <ClInclude Include="include\Events.h" />
+    <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\MyIntDef.h" />
+    <ClInclude Include="include\Render.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="include\Window.h" />
   </ItemGroup>
