@@ -5,7 +5,8 @@
 #include "Util.h"
 #include "Window.h"
 
-struct Render {
+class Render {
+public:
 	SDL_Renderer* ptr;
 
 	Render(const Window& window) {

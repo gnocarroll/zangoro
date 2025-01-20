@@ -129,13 +129,20 @@
     <ClCompile Include="src\Events.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\UI\Box.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Constants.h" />
     <ClInclude Include="include\Events.h" />
+    <ClInclude Include="include\Image\Surface.h" />
+    <ClInclude Include="include\Image\Texture.h" />
     <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\Math\Mat.h" />
+    <ClInclude Include="include\Math\MathUtil.h" />
+    <ClInclude Include="include\Math\Vec.h" />
     <ClInclude Include="include\MyIntDef.h" />
     <ClInclude Include="include\Render.h" />
+    <ClInclude Include="include\UI\Box.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="include\Window.h" />
   </ItemGroup>

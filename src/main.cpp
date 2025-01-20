@@ -11,6 +11,10 @@
 #include "Window.h"
 
 struct AppState {
+	// Besides window these are meant to be thought of kind of like
+	// service (e.g. Angular)
+
+	FTFont font;
 	Window window;
 	Render render = Render(window);
 	Input input;
