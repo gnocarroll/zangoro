@@ -1,0 +1,10 @@
+.vs
+vcpkg_installed
+x64
+
+*.exe
+*.obj
+
+# Mac
+
+*.DS_Store
