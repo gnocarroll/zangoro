@@ -38,8 +38,8 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char** argv) {
 
 	appState.reset(new AppState);
 
-	Font font = appState->fontService.getFont("assets/fonts/Roboto.ttf");
-	BitmapFont bitmapFont = font.renderFont(100);
+	Font font = appState->fontService.getFont("assets/fonts/OpenSans-SemiBold.ttf");
+	BitmapFont bitmapFont = font.renderFont(20);
 
 	std::vector<u8> surfaceData(4 * bitmapFont.w * bitmapFont.h);
 
@@ -52,7 +52,7 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char** argv) {
 
 	SDL_Surface* surface = SDL_CreateSurfaceFrom(
 		bitmapFont.w, bitmapFont.h,
-		SDL_PIXELFORMAT_RGBA8888,
+		SDL_PIXELFORMAT_ABGR8888,
 		surfaceData.data(),
 		bitmapFont.w * 4
 	);
@@ -61,12 +61,42 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char** argv) {
 		surface
 	);
 
-	SDL_FRect dstrect{
-		0.0f, 300.0f, bitmapFont.w, bitmapFont.h
-	};
-
+	SDL_RenderClear(appState->render.ptr);
 	SDL_RenderTexture(appState->render.ptr, tex, nullptr, nullptr);
 	SDL_RenderPresent(appState->render.ptr);
+
+	{
+		auto window = SDL_CreateWindow(
+			"letter",
+			bitmapFont.w, bitmapFont.h,
+			0
+		);
+		auto render = SDL_CreateRenderer(window, nullptr);
+		SDL_RenderClear(render);
+
+		std::vector<u8> surfaceData(4 * bitmapFont.w * bitmapFont.h);
+
+		for (int i = 0; i < surfaceData.size(); i++) {
+			if (i % 4 == 0) {
+				surfaceData[i] = bitmapFont.buf[i / 4];
+			}
+			else surfaceData[i] = 255;
+		}
+
+		SDL_Surface* surface = SDL_CreateSurfaceFrom(
+			bitmapFont.w, bitmapFont.h,
+			SDL_PIXELFORMAT_ABGR8888,
+			surfaceData.data(),
+			bitmapFont.w * 4
+		);
+		SDL_Texture* tex = SDL_CreateTextureFromSurface(
+			render,
+			surface
+		);
+
+		SDL_RenderTexture(render, tex, nullptr, nullptr);
+		SDL_RenderPresent(render);
+	}
 
 	return SDL_APP_CONTINUE;
 }
