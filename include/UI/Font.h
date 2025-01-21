@@ -7,6 +7,8 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
+#include <SDL3/SDL.h>
+
 #include "MyIntDef.h"
 
 #define BITMAP_CHAR_COUNT (128)
@@ -14,8 +16,6 @@
 namespace UI {
 	class BitmapFont {
 	public:
-		bool valid = false;
-
 		struct charInfo {
 			int x;
 
@@ -28,6 +28,8 @@ namespace UI {
 			int advancePx;
 		};
 
+		int requestH = 0;
+
 		// offset from top to baseline of text
 
 		int origin = 0;
@@ -38,6 +40,8 @@ namespace UI {
 		int h = 0;
 
 		std::array<charInfo, BITMAP_CHAR_COUNT> info{};
+
+
 
 		BitmapFont() {}
 		BitmapFont(BitmapFont& other) = delete;

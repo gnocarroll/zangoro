@@ -2,8 +2,6 @@
 
 #include <algorithm>
 
-#include <SDL3/SDL.h>
-
 #include "Util.h"
 
 namespace UI {
@@ -28,6 +26,8 @@ namespace UI {
 			return bitmapFont;
 		}
 
+		bitmapFont.requestH = h;
+
 		// save handle to current glyph
 
 		FT_GlyphSlot glyph = face->glyph;
@@ -39,7 +39,7 @@ namespace UI {
 		// dimensions of buffer for storing bitmap
 		// also store info for characters
 
-		for (int i = 33; i < BITMAP_CHAR_COUNT; i++) {
+		for (int i = 0; i < BITMAP_CHAR_COUNT; i++) {
 			if (FT_Load_Char(face, i, FT_LOAD_RENDER)) return bitmapFont;
 
 			bitmapFont.info[i].x = bitmapFont.w;
@@ -66,39 +66,8 @@ namespace UI {
 
 		bitmapFont.origin = yMax;
 
-		for (int i = 33; i < BITMAP_CHAR_COUNT; i++) {
+		for (int i = 0; i < BITMAP_CHAR_COUNT; i++) {
 			if (FT_Load_Char(face, i, FT_LOAD_RENDER)) return bitmapFont;
-
-			//auto window = SDL_CreateWindow(
-			//	"letter",
-			//	glyph->bitmap.width, glyph->bitmap.rows,
-			//	0
-			//);
-			//auto render = SDL_CreateRenderer(window, nullptr);
-			//SDL_RenderClear(render);
-
-			//std::vector<u8> surfaceData(4 * glyph->bitmap.width * glyph->bitmap.rows);
-
-			//for (int i = 0; i < surfaceData.size(); i++) {
-			//	if (i % 4 == 0) {
-			//		surfaceData[i] = glyph->bitmap.buffer[i / 4];
-			//	}
-			//	else surfaceData[i] = 255;
-			//}
-
-			//SDL_Surface* surface = SDL_CreateSurfaceFrom(
-			//	glyph->bitmap.width, glyph->bitmap.rows,
-			//	SDL_PIXELFORMAT_ABGR8888,
-			//	surfaceData.data(),
-			//	glyph->bitmap.width * 4
-			//);
-			//SDL_Texture* tex = SDL_CreateTextureFromSurface(
-			//	render,
-			//	surface
-			//);
-
-			//SDL_RenderTexture(render, tex, nullptr, nullptr);
-			//SDL_RenderPresent(render);
 
 			buf2DCpy(
 				bitmapFont.buf.data(),

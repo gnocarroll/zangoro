@@ -2,16 +2,18 @@
 
 #include <SDL3/SDL.h>
 
-// may wait to implement until I am sure vcpkg works with this and sdl3
+#include "MyIntDef.h"
+#include "Util.h"
 
 namespace Image {
 	class Texture {
 	public:
-		SDL_Texture* ptr;
+		SDL_Texture* ptr = nullptr;
 
-		Texture(const char* filepath) {
-			ptr = nullptr;
-		};
+		Texture(const char* filepath) {};
+		Texture(SDL_Renderer* render, SDL_Surface* surface) {
+			ptr = execAndCheck<SDL_CreateTextureFromSurface>(render, surface);
+		}
 		Texture(Texture& other) = delete;
 		Texture(Texture&& other) = default;
 

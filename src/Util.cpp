@@ -2,6 +2,7 @@
 
 #include <algorithm>
 
+#define MIN(x, y) ((x) < (y) ? (x) : (y))
 #define MAX(x, y) ((x) > (y) ? (x) : (y))
 
 void buf2DCpy(
@@ -10,8 +11,8 @@ void buf2DCpy(
 	const u8* src,
 	int srcW, int srcH) {
 
-	int xStop = std::min(destW - destX, srcW);
-	int yStop = std::min(destH - destY, srcH);
+	int xStop = MIN(destW - destX, srcW);
+	int yStop = MIN(destH - destY, srcH);
 
 	for (int yRel = MAX(0, -destY); yRel < yStop; yRel++) {
 		for (int xRel = MAX(0, -destX); xRel < xStop; xRel++) {
