@@ -8,13 +8,16 @@
 #include "Events.h"
 #include "Input.h"
 #include "Render.h"
+#include "UI/Font.h"
 #include "Window.h"
+
+using namespace UI;
 
 struct AppState {
 	// Besides window these are meant to be thought of kind of like
 	// service (e.g. Angular)
 
-	FTFont font;
+	FontService font;
 	Window window;
 	Render render = Render(window);
 	Input input;
