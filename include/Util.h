@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include <SDL3/SDL.h>
+
 #include "MyIntDef.h"
 #include "Math/Rect.h"
 
@@ -21,4 +23,4 @@ void buf2DCpy(
 	u8* dest,
 	int destX, int destY, int destW, int destH,
 	const u8* src,
-	int srcW, int srcH) {
+	int srcW, int srcH);

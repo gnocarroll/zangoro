@@ -37,7 +37,7 @@ namespace UI {
 		// dimensions of buffer for storing bitmap
 		// also store info for characters
 
-		for (int i = 0; i < BITMAP_CHAR_COUNT; i++) {
+		for (int i = 33; i < BITMAP_CHAR_COUNT; i++) {
 			if (FT_Load_Char(face, i, FT_LOAD_RENDER)) return bitmapFont;
 
 			bitmapFont.info[i].x = bitmapFont.w;
@@ -62,7 +62,9 @@ namespace UI {
 		bitmapFont.h = yMax - yMin;
 		bitmapFont.buf = std::vector<u8>(bitmapFont.w * bitmapFont.h);
 
-		for (int i = 0; i < BITMAP_CHAR_COUNT; i++) {
+		bitmapFont.origin = yMax;
+
+		for (int i = 33; i < BITMAP_CHAR_COUNT; i++) {
 			if (FT_Load_Char(face, i, FT_LOAD_RENDER)) return bitmapFont;
 
 			buf2DCpy(
@@ -78,5 +80,7 @@ namespace UI {
 				bitmapFont.info[i].w, bitmapFont.info[i].h
 			);
 		}
+
+		return bitmapFont;
 	}
 }

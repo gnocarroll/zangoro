@@ -42,8 +42,6 @@ namespace UI {
 		BitmapFont() {}
 		BitmapFont(BitmapFont& other) = delete;
 		BitmapFont(BitmapFont&& other) = default;
-
-		int renderChar(char c, u8* buf, int w, int h, int x, int y) const;
 	};
 
 	class Font {
