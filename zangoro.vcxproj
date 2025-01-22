@@ -129,6 +129,7 @@
     <ClCompile Include="src\Events.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Phys\World.cpp" />
     <ClCompile Include="src\UI\Box.cpp" />
     <ClCompile Include="src\UI\Font.cpp" />
     <ClCompile Include="src\Util.cpp" />
@@ -144,7 +145,9 @@
     <ClInclude Include="include\Math\Rect.h" />
     <ClInclude Include="include\Math\Vec.h" />
     <ClInclude Include="include\MyIntDef.h" />
+    <ClInclude Include="include\Phys\World.h" />
     <ClInclude Include="include\Render.h" />
+    <ClInclude Include="include\Tilemap.h" />
     <ClInclude Include="include\UI\Box.h" />
     <ClInclude Include="include\UI\Font.h" />
     <ClInclude Include="include\Util.h" />
